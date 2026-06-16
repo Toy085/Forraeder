@@ -3,6 +3,7 @@ local game = require("game")
 state = "menu" -- "menu", "in-game" etc.
 
 function love.load()
+    love.window.setTitle("Forræder")
     if state == "menu" then
         -- Load menu assets here
     elseif state == "in-game" then
