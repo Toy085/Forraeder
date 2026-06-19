@@ -5,7 +5,8 @@ function game.load()
         x = love.graphics.getWidth() / 2,
         y = love.graphics.getHeight() / 2,
         speed = 200,
-        color = {1, 0, 0}
+        color = {0, 1, 0},
+        sprite = love.graphics.newImage("player.png")
     }
 end
 
@@ -34,7 +35,12 @@ end
 
 function game.draw()
     love.graphics.setColor(player.color)
-    love.graphics.circle("fill", player.x, player.y, 5, 5)
+
+    if player.sprite then
+        love.graphics.draw(player.sprite, player.x, player.y)
+    else
+        love.graphics.circle("fill", player.x, player.y, 5)
+    end
 end
 
 return game
