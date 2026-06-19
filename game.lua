@@ -1,19 +1,40 @@
 local game = {}
+
 function game.load()
-    -- Load game assets here
+    player = {
+        x = love.graphics.getWidth() / 2,
+        y = love.graphics.getHeight() / 2,
+        speed = 200,
+        color = {1, 0, 0}
+    }
 end
 
 function game.update(dt)
-    -- Update game logic here
+    -- Player movement
+    if love.keyboard.isDown("w") then
+        player.y = player.y - player.speed * dt
+    end
+
+    if love.keyboard.isDown("s") then
+        player.y = player.y + player.speed * dt
+    end
+
+    if love.keyboard.isDown("a") then
+        player.x = player.x - player.speed * dt
+    end
+
+    if love.keyboard.isDown("d") then
+        player.x = player.x + player.speed * dt
+    end
 end
 
 function game.keypressed(key)
-    -- Handle in-game key presses here
+
 end
 
 function game.draw()
-    -- Draw game here
-    love.graphics.print("In-Game State", 100, 100)
+    love.graphics.setColor(player.color)
+    love.graphics.circle("fill", player.x, player.y, 5, 5)
 end
 
 return game
